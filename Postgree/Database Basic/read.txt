@@ -1,0 +1,22 @@
+What Is A Database?
+A database is a collection of information – information that’s preferably related, and preferably organised. This means that a database can be in any form or shape. 
+It could be a pile of paper records in an office, or a large Excel sheet, or on a computer (most likely in this day and age). But in the most basic terms,
+ a database just helps you store data – so ultimately you can decide what it is.
+
+How to Update a Database
+You can make changes to the different parts of a database using various commands. There are two general types of commands:
+
+Data Definition Language (DDL)
+First, we have Data Definition Language, or DDL. It’s made up of commands that define or alter the shape or structure of the data in the database. 
+These commands affect the metadata part of a database.
+
+Data Manipulation Language (DML)
+We also have Data Manipulation Language, or DML. It’s made up of commands that interact with the data stored in the database. 
+These commands do not affect the structure of the data, but rather the data itself. These command only affect the data part of a database.
+
+What Is a Database Model?
+A database model is a concept used to describe the information stored on a database. Think of it as a building’s blueprint designed by an architect. 
+It details all the tables, columns, and datatypes of the database. But it, in itself, is not a physical entity like the database. A database model determines how data is logically represented and accessed.
+
+Database models define if data is stored in tables using rows and columns, or in JSON-like objects. They also define how data relates, how you can query it, and how you manage it.
+Database models are often chosen (and often developed) to suit specific data/application needs.
