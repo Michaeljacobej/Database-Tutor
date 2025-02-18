@@ -1,0 +1,127 @@
+Data Manipulation Language (DML)
+Data Manipulation Language (DML) is a subset of SQL used to manage data within database objects. 
+It includes commands like SELECT, INSERT, UPDATE, and DELETE, which allow users to retrieve, add, modify, and remove data from tables. 
+DML statements operate on the data itself rather than the database structure, enabling users to interact with the stored information. 
+These commands are essential for day-to-day database operations, data analysis, and maintaining the accuracy and relevance of the data within a database system.
+
+------------SELECT----------------
+SELECT is one of the most fundamental SQL commands, used to retrieve data from one or more tables in a database.
+It allows you to specify which columns to fetch, apply filtering conditions, sort results, and perform various operations on the data. 
+The SELECT statement is versatile, supporting joins, subqueries, aggregations, and more, making it essential for data querying and analysis in relational databases.
+
+SELECT CustomerName, City FROM Customers;
+
+-----------INSERT----------
+The “INSERT” statement is used to add new rows of data to a table in a database. 
+There are two main forms of the INSERT command: INSERT INTO which, if columns are not named, expects a full set of columns, and INSERT INTO table_name (column1, column2, ...) where only named columns will be filled with data.
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+
+---------------Insert Data Only in Specified Columns--------------
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+------------------Insert Multiple Rows-----------------
+It is also possible to insert multiple rows in one statement.
+
+To insert multiple rows of data, we use the same INSERT INTO statement, but with multiple values:
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES
+('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+('Greasy Burger', 'Per Olsen', 'Gateveien 15', 'Sandnes', '4306', 'Norway'),
+('Tasty Tee', 'Finn Egan', 'Streetroad 19B', 'Liverpool', 'L1 0AA', 'UK');
+
+--------------UPDATE--------- 
+The UPDATE statement is used to modify the existing records in a table.
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+Note: Be careful when updating records in a table! Notice the WHERE clause in the UPDATE statement. The WHERE clause specifies which record(s) that should be updated.
+ If you omit the WHERE clause, all records in the table will be updated!
+
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+
+------------DELETE------------
+DELETE is an SQL statement used to remove one or more rows from a table. 
+It allows you to specify which rows to delete using a WHERE clause, or delete all rows if no condition is provided. 
+DELETE is part of the Data Manipulation Language (DML) and is used for data maintenance, removing outdated or incorrect information, 
+or implementing business logic that requires data removal. When used without a WHERE clause, it empties the entire table while preserving its structure,
+unlike the TRUNCATE command.
+
+Note: Be careful when deleting records in a table! Notice the WHERE clause in the DELETE statement. 
+The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!
+
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+
+-------------ORDER BY------------
+The ORDER BY clause in SQL is used to sort the result set of a query by one or more columns. 
+By default, the sorting is in ascending order, but you can specify descending order using the DESC keyword.
+The clause can sort by numeric, date, or text values, and multiple columns can be sorted by listing them in the ORDER BY clause, each with its own sorting direction. 
+This clause is crucial for organizing data in a meaningful sequence, such as ordering by a timestamp to show the most recent records first, or alphabetically by name.
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+SELECT * FROM Products
+ORDER BY Price DESC;
+
+
+
+--------------GROUP BY-------------
+GROUP BY is an SQL clause used in SELECT statements to arrange identical data into groups. 
+It’s typically used with aggregate functions (like COUNT, SUM, AVG) to perform calculations on each group of rows. 
+GROUP BY collects data across multiple records and groups the results by one or more columns, allowing for analysis of data at a higher level of granularity. 
+This clause is fundamental for generating summary reports, performing data analysis, and creating meaningful aggregations of data in relational databases.
+
+SELECT column1, column2, ...
+FROM table
+GROUP BY columnA, columnB, ...;
+
+-- count the number of customers in each country
+
+SELECT country, COUNT(*) AS number
+FROM Customers
+GROUP BY country;
+
+---------------HAVING------------
+The HAVING clause is used in combination with the GROUP BY clause to filter the results of GROUP BY. It is used to mention conditions on the group functions, like SUM, COUNT, AVG, MAX or MIN.
+
+It’s important to note that where WHERE clause introduces conditions on individual rows, HAVING introduces conditions on groups created by the GROUP BY clause.
+
+Also note, HAVING applies to summarized group records, whereas WHERE applies to individual records.
+
+The SQL HAVING clause is used if we need to filter the result set based on aggregate functions such as MIN() and MAX(), SUM() and AVG(), and COUNT().
+
+SELECT AggFunc(column), extra_columns
+FROM table
+GROUP BY target_column
+HAVING condition
+
+
+-- select customers with the same first name based on their age count 
+SELECT COUNT(age) AS Count, first_name
+FROM Customers
+GROUP BY first_name
+HAVING COUNT(age) > 1;
+
+JOINs
+SQL JOINs are clauses used to combine rows from two or more tables based on a related column between them. They allow retrieval of data from multiple tables in a single query, enabling complex data analysis and reporting. The main types of JOINs include:
+
+INNER JOIN (returns matching rows from both tables)
+LEFT JOIN (returns all rows from the left table and matching rows from the right)
+RIGHT JOIN (opposite of LEFT JOIN)
+FULL JOIN (returns all rows when there’s a match in either table)
+JOINs are fundamental to relational database operations, facilitating data integration and exploration across related datasets.
+

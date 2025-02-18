@@ -1,0 +1,48 @@
+Basic SQL Syntax
+
+----------------------------------------------Data Definition Language (DDL)----------------------------------------------------------
+Data Definition Language (DDL) is a subset of SQL used to define and manage the structure of database objects.
+DDL commands include CREATE, ALTER, DROP, and TRUNCATE, which are used to create, modify, delete, and empty database structures such as tables, indexes, views, and schemas. 
+These commands allow database administrators and developers to define the database schema, set up relationships between tables, and manage the overall structure of the database.
+DDL statements typically result in immediate changes to the database structure and can affect existing data.
+
+The main DDL commands are create, alter, drop and truncate.
+
+Create Statement
+It is used to create a database or table. While creating the table,we specify table_name,column_name followed by data_types(int,float,varchar,etc) 
+and constraints(primary key,not null,etc)
+
+CREATE TABLE table_name
+(
+   column1 datatype,
+   column2 datatype,
+   ..... 
+)
+
+CREATE TABLE students
+(
+   id INT PRIMARY KEY,
+   Name VARCHAR(20),
+   Age INT,
+   dob DATE
+);
+
+Alter Command
+It is used to make a change in the structure of a database. Different operations like adding new columns, 
+removing columns, changing data types or adding/removing constraints can be performed.
+
+ALTER TABLE table_name ADD column_name datatype;
+ALTER TABLE students#table on which operation is done
+ADD roll_no int;#adding column(roll_no) to table
+
+Truncate Command
+It is used to delete the entities inside the table while holding the structure of the table.
+It free up the space from the table whereas the column names are left resulting to store new data in the table.
+
+TRUNCATE TABLE table_name;
+TRUNCATE TABLE students;#students table is truncated
+
+Drop Command
+It is used to completely delete a table from the database. the table along with the structure is deleted and can't be found again in the database.
+
+DROP TABLE table_name;
