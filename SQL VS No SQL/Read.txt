@@ -1,0 +1,134 @@
+High Level Database Concept
+
+-------ACID-----------------
+ACID, but the good kind
+Popular relational databases like MySQL avoid these kinds of data integrity issues by following a few core principles that govern how transactions work. They conform to a transactional standard called ACID. 
+ACID is an acronym for four different words, but it really breaks down into two core principles: completeness and concurrency. First, here’s what ACID stands for:
+
+Atomicity: the “all or nothing” rule — the transaction either happens completely or doesn’t happen at all
+Consistency: data is consistent before and after a transaction without any missing steps
+Isolation: multiple transactions can happen concurrently without reading the wrong data
+Durability: transactional success is robust to system failure
+These overlap a lot, so just remember: the point of any ACID compliant DB is to make sure that
+
+Transactions can fail without hurting data integrity
+Multiple transactions can occur concurrently without reading and writing the wrong data
+ACID is a set of properties, but it’s not a process: how do the SQL databases we use actually achieve ACID compliance? They use a system called locking to keep the database on hold while transactions happen. 
+Locking works like you’d imagine it would: when a transaction begins, the database engine locks the data that it’s working with until the transaction is completed (and sometimes, beyond that).
+That way, concurrent transactions can’t work with the data that’s being changed by the first transaction.
+
+Once a transaction begins and acquires a lock, it can either finish successfully and commit, or run into an error and abort.
+It’s sort of like writing in an Excel spreadsheet before saving your work — things are changed, but only softly, until you save them (commit) or revert them (abort).
+Back to our Amazon example: if our database runs into an error right after updating a user’s order quantity, the transaction will abort, and it’s as if that update never happened. 
+And if the error happened during the update, the credit card will never get charged.  Either everything happens or nothing happens, and that’s ACID.
+
+
+------------------MVCC-------------
+Multi-Version Concurrency Control (MVCC) is a technique used by PostgreSQL to allow multiple transactions to access the same data concurrently without conflicts or delays. It ensures that each transaction has a consistent snapshot of the database and can operate on its own version of the data.
+
+
+---------------Transaction-----------------
+Transactions are a fundamental concept in database management systems, allowing multiple statements to be executed within a single transaction context. In PostgreSQL, transactions provide ACID (Atomicity, Consistency, Isolation, and Durability) properties, which ensure that your data remains in a consistent state even during concurrent access or system crashes. By leveraging transaction control, savepoints, concurrency control, and locking, you can build robust and reliable applications that work seamlessly with PostgreSQL.
+
+
+--------------Query Processing----------------
+Query processing is an important aspect of a database system, as it is responsible for managing data retrieval and modification using Structured Query Language (SQL) queries. Efficient query processing is crucial for ensuring optimal database performance.
+
+
+---------SQL VS NoSQL ------------------
+
+
+WHAT IS SQL?
+SQL Which stands for structured Query Language is a domain specifi programming language(language targeted to a specific task or problem) that is commonly used for task such as inserting updating querying and deleting data within a database
+
+SQL is also used to create and modify database schemas(eg data formatting rules ,table /index structure) ass well as define database access and administration parameters
+
+what is structure data?
+structure data is data that is organized in a consistent , predefined format and often consist of alphanumeric characters Examples inclue financial transactions , inventory records , or customer list which are often stored in SQL databases
+
+What is a SQL databae?
+when the term SQL database is used it refer to a type of database where SQL is the primary programming language used to create and manage that database. SQL application programming interfaces contain groups of function that enable developers to execute and manage database operations without having to create individual SQL commands over and over
+
+Relational database
+relational database or relational database managemenet systems store data within rows and column wihich are use to form tables. A relationship between the two tables (or more) can be created using a foreign key. these foreign keys maintained predefined relationship that exist between the tables
+
+Example of SQL database including
+
+Oracle database
+MySQL
+PostgreeSQL
+MSSQL
+
+
+Database storage model
+The difference between SQL and NoSQL database systems relating to data storage is a stark one. Specifically, SQL databases store data in tables containing rows and columns whereas NoSQL systems store data using various methods depending on the type of unstructured data being ingested (e.g., JSON documents, key-value pairing, family grouping, graph nodes/edges).
+
+Data type
+While NoSQL databases, sometimes referred to as non-relational databases, are able to ingest, store, and retrieve unstructured data, SQL databases (e.g., traditional relational databases) are not. SQL databases are only able to ingest, store, and retrieve structured data. This is due to the difference between SQL vs NoSQL schemas utilized.
+
+Schemas
+SQL databases rely on a strict, predefined data schema with which data to be ingested must align. However, NoSQL databases use flexible schemas which enable them to ingest data in its various native formats.
+
+Scalability
+It's important for database administrators to plan for the growth and expansion of their database systems — this is another clear point of differentiation between SQL vs NoSQL databases.
+
+
+SQL databases
+
+SQL databases are traditionally scaled vertically. This means that resources (e.g., CPUs, storage, or memory) are added to a single server. And, while this may cause limitations to the amount of growth possible as there is only one server with finite capacity being scaled, there are several reasons for this scaling choice:
+
+Atomicity, Consistency, Isolation, and Durability (ACID) compliance: ACID compliance refers to a set of properties that guarantee the reliability, consistency, and data integrity of database transactions. This is very important as many SQL databases contain banking and financial information which must be compliant with government and industry standards. However, it is more difficult to maintain ACID compliance across a distributed system (e.g., many computers linked by a network) where resources are increased via horizontal scaling vs one computer and one server that is vertically scaled.
+Note: There are some distributed system 
+
+NoSQL databases that can maintain ACID compliance, such as MongoDB Atlas
+.
+Transaction management: Transaction management mechanisms are employed by SQL databases to maintain data integrity and database consistency. Managing simultaneous transactions across multiple nodes in a distributed database environment would likely create additional complexity and resource usage which could impact both data integrity and possibly overall database performance. If horizontal scaling were to be utilized, these issues would be a possibility.
+
+
+Schema rigidity: SQL databases employ rigid, predefined schemas with which they ingest data. While this is simple to maintain in a one computer/server environment, complexity would be added if a distributed system with horizontal scaling were employed. Specifically, each node could potentially have a different schema version which would increase administration overhead and potentially cause additional data consistency issues.
+
+Not only structured query language(NoAQL)
+
+Not only Structured Query Language (NoSQL)
+What is NoSQL?
+NoSQL, which stands for Not only SQL, is a database management system approach used to ingest, store, and retrieve unstructured data and semi-structured data within a database. This means that data that cannot be analyzed or counted through traditional relational databases (e.g., SQL) can remain in its native format and be ingested into a NoSQL database. The reason it is called NoSQL is to emphasize that these databases can handle non-tabular, non-relational data models as well as support SQL-like query languages.
+
+What is unstructured data?
+Unstructured data is data that doesn't have a predefined data model or consistent organization. In addition, unstructured data, such as social media posts, can update and change rapidly while structured data, such as bank transactions, have a much lower rate of change. Examples of unstructured data include pictures, audio files, videos, and maps.
+
+What is a NoSQL database?
+NoSQL databases are databases that utilize a flexible schema that accommodates unstructured data and semi-structured data while also utilizing a non-tabular data storage method.
+
+The use of a flexible schema enables NoSQL databases to ingest unstructured data in its native format (e.g., .txt, .JPG, MP3), which is not possible with SQL databases due to the requirement that all data align to a predefined format. Further, when NoSQL databases store data, flexible data models are employed so that unstructured data files can have different data structures and still be stored within the same 
+collection
+
+
+Types of NoSQL databases
+There are different types of NoSQL databases, including:
+
+Document databases: Document databases, sometimes referred to as object-oriented databases, store data in documents similar to JSON (JavaScript Object Notation) objects, although they're not JSON stores. They use the drivers returned from native objects to the programming language used by the developer without needing an object relational mapper (ORM). Each document itself is treated as a record and can contain values including numbers, arrays, objects, strings, or even Boolean characters. In addition, key-value pairs, nested documents, or other structured data can be included. A popular provider of these NoSQL databases is MongoDB
+
+Key-value databases: Key-value databases collect, retrieve, and store data as groupings of key-value pairs. This means that each data record is represented by a unique key and an associated value. The key is used to retrieve the corresponding value from the database. For example, in an interior design key-value database, a key might be "color" and the value might be "purple." Popular providers of these NoSQL database systems include AWS and ScyllaDB.
+
+Column-family stores: Column-family databases organize data into columns rather than rows, which is helpful when working with wide datasets that are sparse in depth. In fact, column-family stores are sometimes referred to as "wide-column stores." In column-family stores, each row has a different set of columns, with columns then gathered into "families." These data models are helpful when working with large-scale datasets that benefit from horizontal scaling to optimize performance. Popular providers of these NoSQL databases include Apache Cassandra and HBase.
+
+Graph databases: Graph databases store data in nodes and edges. Nodes typically store information about people, places, and things, while edges store information about the relationships between the nodes. Graph databases are excellent tools for querying graph structures (e.g., social networks, hierarchies). Popular providers of these NoSQL databases include Neo4j, AWS, and Kibana.
+
+key differences between SQL vs NoSQL databases
+
+
+NoSQL databases
+
+NoSQL database systems are often configured in what's called a distributed system. This means a number of independent computers (e.g., nodes) are linked via a network and work together to yield common objectives. Being part of a distributed system also means that  horizontal scaling vs vertical scaling can be utilized.
+
+Horizontal scaling involves increasing the available resources and capacity of a distributed system by adding more nodes (e.g., computers, servers) to that system. In doing so, more nodes are available to support the system's workload. In addition, there is virtually no limit to how large the database can grow from a capacity perspective as additional nodes can continue to be added.
+
+Popular NoSQL Databases
+Let us summarize some popular NoSQL databases that falls in the above categories respectively.
+
+Document Oriented Databases − MongoDB, HBase, Cassandra, Amazon SimpleDB, Hypertable, etc.
+Graph Based Databases − Neo4j, OrientDB, Facebook Open Graph, FlockDB, etc.
+Column Based Databases − CouchDB, OrientDB, etc.
+Key Value Databases − Membase, Redis, MemcacheDB, etc.
+
+

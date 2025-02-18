@@ -10,13 +10,81 @@ Data Definition Language (DDL)
 First, we have Data Definition Language, or DDL. It’s made up of commands that define or alter the shape or structure of the data in the database. 
 These commands affect the metadata part of a database.
 
+DDL Commands
+1. CREATE
+This is the SQL command used to create and define new database objects. It's a part of the Data Definition Language (DDL), and its primary function is to establish the structure or schema of the database.
+
+    You can use this command to do the following (amongst many other uses):
+
+    Create new databases
+
+    Create new tables
+
+    Create a new index in a table
+
+    Create views
+
+    Create a user with specific access rights
+
+2. ALTER
+This command modifies the structure of an existing table. This command is versatile and allows for a wide range of table modifications. 
+These include adding, removing, modifying, and renaming columns, and managing constraints and indexes.
+
+3. DROP
+This command deletes an existing table or database. When you use the DROP command, it completely removes the object from the database, and this action is irreversible. 
+You can use us to remove databases, tables, and indexes.
+
+4. TRUNCATE
+This command removes all data from a table while preserving its structure. This same result can be achieved using the DELETE DML command.
+
+
 Data Manipulation Language (DML)
 We also have Data Manipulation Language, or DML. It’s made up of commands that interact with the data stored in the database. 
 These commands do not affect the structure of the data, but rather the data itself. These command only affect the data part of a database.
+
+These DML commands are foundational for CRUD operations, which stand for Create, Read, Update, and Delete – the basic actions you perform with data in a database.
+
+1. INSERT
+Adds a new record to the database. This is the Create part of CRUD.
+
+2. SELECT
+The SELECT command has the basic syntax:
+
+3. UPDATE
+The UPDATE command modifies existing records in the database. This is the Update part of CRUD.
+
+To update the details of Christiano Ronaldo to be more accurate, you can use the UPDATE command like this:
+
+UPDATE `players`
+SET
+    `name` = 'Cristiano Ronaldo',
+    `age` = 38,
+    `club` = 'Al Nassr'
+WHERE
+    `id` = 1;
+
+4. DELETE
+The DELETE command removes records from the database. This is the Delete part of CRUD.
+
+
 
 What Is a Database Model?
 A database model is a concept used to describe the information stored on a database. Think of it as a building’s blueprint designed by an architect. 
 It details all the tables, columns, and datatypes of the database. But it, in itself, is not a physical entity like the database. A database model determines how data is logically represented and accessed.
 
-Database models define if data is stored in tables using rows and columns, or in JSON-like objects. They also define how data relates, how you can query it, and how you manage it.
-Database models are often chosen (and often developed) to suit specific data/application needs.
+Database models define if data is stored in tables using rows and columns, or in JSON-like objects. They also define how data relates,
+how you can query it, and how you manage it.Database models are often chosen (and often developed) to suit specific data/application needs.
+
+Examples of some relational databases include MySQL, PostgreSQL, and SQLite. This model is popularly used for general-purpose applications that require structured, 
+and often related, data and complex queries. The rest of the article will focus on this model.
+
+Document Model: Data is stored as documents, often in JSON or XML format, in this model. Databases like MongoDB and CouchDB use this model. 
+Document DBs promote flexibility with their JSON-like structures, and they’re commonly used in applications dealing with semi-structured data or hierarchical data, 
+where flexibility is key.
+
+Key-Value Model: In this model, data is stored as simple key-value pairs, like in a map in programming. This model is used by Redis and DynamoDB. 
+Due to the simplicity of this model, it is used in high-performance scenarios for simple lookups or caching.
+
+Graph Model: this model uses nodes (entities) and edges (relationships) to manage data. Neo4j and Amazon Neptune are examples of databases using this model. 
+The shape of the nodes and edges in the graph model make it a common choice in applications involving relationships or connections between data points.
+

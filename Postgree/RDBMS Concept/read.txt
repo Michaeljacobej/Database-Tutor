@@ -1,0 +1,137 @@
+Database Management System
+
+Database Management System or DBMS in short refers to the technology of Storign and Retrieving users data with utmost efficiency along with appropriate security measeures
+
+Why to learn DBMS? 
+tar data was organized in file formats. 
+DBMS was a new concept then and all the research was done to
+make it overcome the deficiencies in traditional style of data management
+
+a Modern DBMS has the following chatacteristic
+Real world entity - A modern DBMS is more realistic and uses real world entities to design its architecture
+
+Relational based tables
+DBMS allows entities and relations among them to form tables
+
+Isolation of data and application
+-A database system is entirely different than its data
+
+Less redundancy
+DBMS follows the rules of normalization
+
+Consistensy
+Consistency is a state where every relation in database remains consistency
+
+Query Languages
+DBMS is equiepped with query language which make it more efficient to retrieve and manipulate data
+
+DBMS Characteristic
+Database is a collection of related data and data is a collection of facts and figures that can be processed to produce information
+
+a database management system store data in such a way that it becomes easier to retrieve , manipulate and produce information
+
+ACID Properties
+DBMS follows the concept of Atomicity , Coonsistency , Isolation and Durability (onormaly shortened as ACID) These concepts are applied on transactons which manipulate data in a database
+
+Multiuser and concurrent Access
+DBMS support multi user environment and allow them to access and manipulate data
+
+Multiple views 
+DBMS offers multiple views for different users
+
+Security
+Features like multiple views offer security to some extent where users are unable to access data of other users and department
+
+Users
+a typical DBMS has users with different rights and permissions who use it for different purposes
+
+Administrators
+Administrators maintain the DBMS and are responsible for administrating the database
+
+Designers
+Designers are the group of people who actuallyu work on the designing part of the database
+
+End Users
+ende users are those who actually reap the benefits of having a DBMS
+
+
+-------------------Architecture-----------------------------------
+
+3 tier Architecture
+
+Presentation Tier
+Application Tier
+Database Tier
+
+Database Tier - at this tier , the database resides along with its query processing languages
+
+Application middle Tier - at this tier reside the application server and the programs that access the database
+
+User(Presentation Tier) - 
+End users operate on this tier and they know nothing about any existence of the database beyond this layer
+
+-----------------Data Model------------------------
+
+Entity Relatinship Model
+Entitiy Relationship model is based on the notion of real world entities and relationship among them
+
+Entitites and their attributes
+relationship among entitites
+
+Entity 
+an entity in an ER Model is a real world entity having properties called attributes
+
+Relationship
+the logical association among enitties is called relationship. relationship are mapped with entities in various ways
+
+
+one to one
+one to many
+many to one
+many to many 	
+
+relational model
+the most popular data model in dbms is the relational model it is more scientific a model than others. this model is based on first order predicate logic and define a table as an n-ary relation
+
+data is stored in tables called relations
+relations can be normalized
+in normalized relations , values saved are atomic values
+each row in a relation contains a unique value
+each column in a relation contains values from a same domain
+
+Database Schema
+a database schema is the skeleton structure that represents the logical view of the entire database
+
+--------------------Entity Relaitonship Model------------------------
+the ER Model defines the conceptual view of a database. it works around real world entititees and the associations among them
+
+Entity
+an entitiy can be a real world either animate or inaminate, that can be easily identifiable 
+for example
+
+in a school database , students ,teachers ,classes and courses offered can be considered as entities. all these entities have some attributes or properties that give them their identify
+
+Attributes
+Entities are represented by meands of their properties called attributes. all attributes have values for examole a student entity may have some values and ages as attributes
+
+Type of Attributes
+
+Simple attribute 
+simple attributes are atomic values which cannot be divided further for example a students phone number is an atomic value of 10 digit
+
+Composite attribute
+Composite attribute are made of more than one simple attribute for example a students complete name may have first_name and last_name
+
+Derived attribute
+Derived attributes are the attributes that do not exist in the physical database, but their values are derived from other attributes present in the database
+
+Single value attribute
+single value attribute contain single value for example - Single_Security_Number
+
+Multi-value attribute
+multi value attributes may contain more tha one values for example a person can have more than one phone number, email address , etc
+
+
+
+
+
